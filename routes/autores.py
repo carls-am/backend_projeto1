@@ -8,12 +8,21 @@ def listar_autores():
 
     conexao = conectar_banco()
 
-    autores = conexao.execute(
-        " "
+    autores = conexao.execute("""
+        SELECT * FROM autores
+        ORDER BY id
+        """
     ).fetchall()
 
     conexao.close()
-    return jsonify({
-        dict(autor)
-        for autor in autores
-    })
+
+    resultado = []
+
+    for autor in autores:
+        resultado.append({
+            "id": autor["id"],
+            "nome": autor["nome"],
+            "nacionalidade": autor["nacionalidade"]
+        })
+
+    return jsonify(resultado)
