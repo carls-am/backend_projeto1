@@ -11,5 +11,13 @@ app.register_blueprint(livros_bp)
 def inicio():
     return jsonify({"Aviso: API de Biblioteca"})
 
+@app.errorhandler()
+def erro(erro):
+    return jsonify({
+        "erro": True,
+        "Aviso": "Rota não encontrada",
+        "Status": 404
+    })
+
 if __name__ == "__main__":
     app.run(debug=True)
