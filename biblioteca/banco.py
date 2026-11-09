@@ -85,7 +85,7 @@ try:
 
 except Exception as erro:
     conexao.rollback()
-    print("Erro ao conectar com o banco de dados, morra imediatamente", erro)
+    print("Erro ao conectar com o banco de dados, morra imediatamente!!", erro)
 
 finally:
     conexao.close()
